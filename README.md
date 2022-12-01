@@ -1,1 +1,1 @@
-# Stroke-predict
+You will find the dataset on Kaggle:from Kaggle: https://www.kaggle.com/datasets/fedesoriano/stroke-prediction-dataset the jupyter notebook is to create the ML model and the app.py is for the streamlit application.
