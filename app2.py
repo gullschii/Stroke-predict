@@ -16,22 +16,24 @@ st.sidebar.header('User Input Features')
 # Collects user input features into dataframe
 
 def user_input_features():
+    
     age = st.sidebar.number_input('Age: ')
-
+    #1 = yes 0 = no
     gender  = st.sidebar.selectbox('Gender',("Man","Female","Other"))
-    hypertension = st.sidebar.selectbox('Hypertension',("Yes","No"))
-    heart_disease = st.sidebar.selectbox('Heart Disease ',("Yes","No"))
-    ever_married = st.sidebar.selectbox('Maried:',("Yes","No"))
-    work_type = st.sidebar.selectbox('Work Type',("Never","Govt_job","Private","Childern","employed"))
-    residence_type = st.sidebar.selectbox('Resident Type: ',("Urban","Rural"))
-    smoking_status = st.sidebar.selectbox('Smoking Status',("formerl","Unknown","never","smoking"))
+    hypertension = st.sidebar.selectbox('Hypertension',(0,1))
+    heart_disease = st.sidebar.selectbox('Heart Disease ',(0,1))
+    ever_married = st.sidebar.selectbox('Maried:',(0,1))
+    work_type = st.sidebar.selectbox('Work Type',(0,1,2,3))
+     #1 = Urban 0 = Rural
+    residence_type = st.sidebar.selectbox('Resident Type : ',(0,1))
+    smoking_status = st.sidebar.selectbox('Smoking Level',(0,1,2,3))
 
-    data = {'age': age,
-            'gender': gender, 
-            'hypertension': hypertension,
-            'ever_married':ever_married,
-            'work_type': work_type,
-            'residence_type': residence_type,
+    data = {'Age': age,
+            'Gender': gender, 
+            'Hypertension': hypertension,
+            'Ever Married':ever_married,
+            'Work_type': work_type,
+            'Residence_type': residence_type,
             'smoking_status': smoking_status,
         
                 }
@@ -47,7 +49,7 @@ healthcare = healthcare.drop(columns=['stroke'])
 df = pd.concat([input_df,healthcare],axis=0)
 
 # Encoding of ordinal features
-df = pd.get_dummies(df, columns = ['gender', 'hypertension', 'heart_disease', 'ever_married',
+df = pd.get_dummies(df, columns = ['gender', 'age', 'hypertension', 'heart_disease', 'ever_married',
        'work_type', 'Residence_type', 'avg_glucose_level',
        'smoking_status',])
 
